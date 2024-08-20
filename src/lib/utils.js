@@ -26,6 +26,7 @@ export const createBadge = ({
   badgeIcon = 'html5',
   badgeTextColor = 'white',
   badgeStyle = 'flat',
+  badgeLink = '',
 }) => {
   const logoName = badgeIcon
     ? 'si' + badgeIcon.at(0).toUpperCase() + badgeIcon.slice(1).toLowerCase()
@@ -40,7 +41,11 @@ export const createBadge = ({
   src="https://img.shields.io/badge/${label}-${color}?style=${badgeStyle}&logo=${icon?.title}&logoColor=${textColor}"
 />`;
 
-  return { html, originalColor: icon?.hex };
+  const linkHtml = badgeLink
+    ? `<a href="${badgeLink}" target="_blank" rel="noopener noreferrer">${html}</a>`
+    : null;
+
+  return { html: linkHtml || html, originalColor: icon?.hex };
 };
 
 export const getUser = async (value) => {
@@ -57,10 +62,10 @@ export const getUser = async (value) => {
   } catch (e) {
     const statusCode = e.response.status;
     if (statusCode === 404) {
-      alert('올바른 깃허브 아이디를 입력해주세요');
+      toast.error('올바른 깃허브 아이디를 입력해주세요');
       return;
     }
-    alert(`개발자에게 문의해주세요\nErrorCode: ${statusCode.status}`);
+    toast.error(`개발자에게 문의해주세요\nErrorCode: ${statusCode.status}`);
   }
 };
 

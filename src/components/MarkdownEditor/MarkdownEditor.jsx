@@ -1,3 +1,4 @@
+import colorSyntax from '@toast-ui/editor-plugin-color-syntax';
 import '@toast-ui/editor/dist/toastui-editor.css';
 import { Editor } from '@toast-ui/react-editor';
 import { debounce } from 'es-toolkit';
@@ -57,7 +58,20 @@ const MarkdownEditor = () => {
           //   { type: 'closeTag', tagName: 'img', outerNewLine: true },
           // ];
         },
+        latex(node) {
+          const generator = new latexjs.HtmlGenerator({ hyphenate: false });
+          const { body } = latexjs
+            .parse(node.literal, { generator })
+            .htmlDocument();
+
+          return [
+            { type: 'openTag', tagName: 'div', outerNewLine: true },
+            { type: 'html', content: body.innerHTML },
+            { type: 'closeTag', tagName: 'div', outerNewLine: true },
+          ];
+        },
       }}
+      plugins={[colorSyntax]}
     />
   );
 };

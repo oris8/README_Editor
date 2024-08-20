@@ -22,6 +22,7 @@ const INITIAL_VALUE = {
   badgeIcon: 'github',
   badgeTextColor: '',
   badgeStyle: 'flat',
+  badgeLink: '',
 };
 
 const BadgeForm = () => {
@@ -122,6 +123,16 @@ const BadgeForm = () => {
             <CustomRadioGroup
               options={OPTIONS}
               onChange={(value) => handleValueChange('badgeStyle', value)}
+            />
+          </FormGroup>
+
+          <FormGroup>
+            <FormGroup.Label>뱃지 링크</FormGroup.Label>
+            <FormGroup.InputField
+              value={value.badgeLink}
+              type="text"
+              name="badgeLink"
+              onChange={(e) => handleValueChange(e.target.name, e.target.value)}
             />
           </FormGroup>
 
