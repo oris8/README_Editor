@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom CSS */
+
+/* Tailwind Classes */
+
+:root {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif, system-ui,
+    Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  /* color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #ffffff; */
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.profile-overlay:hover .opacity-0 {
+  opacity: 1;
+}
+
+@layer components {
+  .git-border {
+    @apply border-[1px] border-[#dadde6];
+  }
+
+  .git-bg {
+    @apply bg-[#f7f9fc];
+  }
+
+  .git-input {
+    @apply w-32 overflow-hidden rounded-[4px] border-[1px] border-[#dadde6] px-3 py-1 text-left focus:bg-slate-50 focus:outline-0;
+  }
+
+  .git-button {
+    @apply w-36 rounded-[4px] border-[1px] border-[#dadde6] bg-[#f7f9fc] p-2 px-2 py-1 hover:bg-slate-100;
+  }
+}
